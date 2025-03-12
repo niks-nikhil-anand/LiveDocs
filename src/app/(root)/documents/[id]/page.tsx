@@ -1,16 +1,32 @@
-import { Editor } from '@/components/editor/Editor'
-import Header from '@/components/Header'
-import React from 'react'
+import { Editor } from "@/components/editor/Editor";
+import Header from "@/components/Header";
+import {
+  SignedIn,
+  SignedOut,
+  SignInButton,
+  SignUpButton,
+  UserButton,
+} from "@clerk/nextjs";
+import React from "react";
 
 const Document = () => {
   return (
     <div>
       <Header>
-        <p className='text-white'>Test</p>
+        <div className="flex items-center justify-center gap-2">
+          <p className="text-white">This is fake title</p>
+        </div>
+        <SignedOut>
+          <SignInButton />
+          <SignUpButton />
+        </SignedOut>
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
       </Header>
-      <Editor/>
+      <Editor />
     </div>
-  )
-}
+  );
+};
 
-export default Document
+export default Document;
