@@ -14,7 +14,7 @@ const Document = () => {
     <div>
       <Header>
         <div className="flex items-center justify-center gap-2">
-          <p className="text-white">This is fake title</p>
+          <p className="text-white font-bold text-lg">This is fake title</p>
         </div>
         <SignedOut>
           <SignInButton />
