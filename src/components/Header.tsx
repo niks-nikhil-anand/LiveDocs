@@ -6,6 +6,7 @@ const Header = ({children}:HeaderProps) => {
   return (
     <div>
         <div className='min-h-[92px] min-w-full flex-nowrap bg-dark-100 flex w-full items-center justify-between gap-2 px-4'>
+            <div>
             <Link href={"/"}>
             <Image
             src={"/assets/icons/logo.svg"}
@@ -22,7 +23,10 @@ const Header = ({children}:HeaderProps) => {
             className=' md:hidden mr-2'
             />
             </Link>
+            </div>
+            <div>
             {children}
+            </div>
         </div>
     </div>
   )
