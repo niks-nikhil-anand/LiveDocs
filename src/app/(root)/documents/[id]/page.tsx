@@ -18,7 +18,6 @@ const Document = () => {
         </div>
         <SignedOut>
           <SignInButton />
-          <SignUpButton />
         </SignedOut>
         <SignedIn>
           <UserButton />
