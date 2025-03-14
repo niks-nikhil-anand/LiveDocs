@@ -11,6 +11,7 @@ const Loader = () => {
         width={32}
         className='animate-spin'
         />
+        Loading....
     </div>
   )
 }
