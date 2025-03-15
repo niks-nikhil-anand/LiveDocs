@@ -21,11 +21,11 @@ const Home =  async () => {
         </div>
       </Header>
       {documents.length>0 ? (
-        <div>
+        <div className="flex flex-col items-center mb-10 w-full gap-10 px-5">
 
         </div>
       ): (
-        <div>
+        <div className="flex w-full max-w-[730px] flex-col items-center justify-center gap-5 rounded-lg bg-dark-200 px-10 py-8">
           <Image
           src={"/assets/icons/doc.svg"}
           alt="docs"
