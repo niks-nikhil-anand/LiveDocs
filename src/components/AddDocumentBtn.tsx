@@ -1,8 +1,11 @@
 import React from 'react'
+import { Button } from './ui/button'
 
-const AddDocumentBtn = () => {
+const AddDocumentBtn = ({userId , email}: AddDocumentBtnProps) => {
   return (
-    <div>AddDocumentBtn</div>
+    <Button>
+        <p className='hidden sm:block'>Start a blank Documents</p>
+    </Button>
   )
 }
 
