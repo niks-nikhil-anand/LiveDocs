@@ -8,7 +8,6 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import { Klass, LexicalNode } from 'lexical';
 import React from 'react';
 
 function Placeholder() {
@@ -18,7 +17,7 @@ function Placeholder() {
 export function Editor() {
   const initialConfig = {
     namespace: 'Editor',
-    nodes: [HeadingNode as Klass<LexicalNode>], 
+    nodes: [HeadingNode], 
     onError: (error: Error) => {
       console.error(error);
       throw error;
