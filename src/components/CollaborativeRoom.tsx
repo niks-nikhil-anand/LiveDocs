@@ -5,9 +5,9 @@ import Header from "@/components/Header";
 import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
 import ActiveCollaborator from "./ActiveCollaborator";
 
-const CollaborativeRoom = () => {
+const CollaborativeRoom = ({roomId , roomMetadata}: CollaborativeRoomProps) => {
   return (
-    <RoomProvider id="my-room">
+    <RoomProvider id={roomId}>
       <ClientSideSuspense fallback={<div>Loading…</div>}>
         <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
           <Header>
