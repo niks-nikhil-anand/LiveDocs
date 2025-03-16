@@ -29,5 +29,7 @@ export const createDocument = async ({userId , email} : CreateDocumentParams) =>
         
     } catch (error) {
         console.log(`Error while creating Room ${error}`)
+        throw new Error(`Error while creating Room: ${error}`);
+
     }
 }
