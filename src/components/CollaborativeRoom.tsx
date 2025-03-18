@@ -16,13 +16,24 @@ const CollaborativeRoom = ({
 
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);
-  const [loading, setloading] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const InputRef = useRef<HTMLDivElement>(null);
 
   const updateTitleHandler = (e: React.KeyboardEvent<HTMLInputElement>) => {
-    
+    if(e.key === 'Enter'){
+      setLoading(true)
+
+      try {
+        if(documentTitle !== roomMetadata.title){
+          
+        }
+      } catch (error) {
+        console.error(error)
+      }
+      setLoading(false)
+    }
   };
 
   useEffect(() => {
