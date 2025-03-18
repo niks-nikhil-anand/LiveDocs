@@ -76,3 +76,13 @@ export const updateDocumentTitle = async (roomId: string, title: string) => {
     throw error; // Re-throw the error to handle it in the calling function
   }
 };
+
+export const getDocuments = async (email: string) => {
+  try {
+    const rooms = await liveblocks.getRooms({userId:email});
+
+    return parseStringify(rooms);
+  } catch (error) {
+    console.log(`Error happend while getting  rooms ${error}`);
+  }
+};
