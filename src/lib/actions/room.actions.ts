@@ -56,16 +56,23 @@ export const getDocument = async ({
   }
 };
 
+
 export const updateDocumentTitle = async (roomId: string, title: string) => {
   try {
-    const updatedRoom = liveblocks.updateRoom(roomId , {
-      metadata : {
-        title
-      }
-    })
+    // Update the room metadata with the new title
+    const updatedRoom = await liveblocks.updateRoom(roomId, {
+      metadata: {
+        title,
+      },
+    });
+
+    // Revalidate the path to ensure the UI reflects the changes
     revalidatePath(`/documents/${roomId}`);
-    return parseStringify(updatedRoom)
+
+    // Return the updated room data
+    return parseStringify(updatedRoom);
   } catch (error) {
-    console.log('Error happend while updating the title of the dosument')
+    console.error("Error happened while updating the title of the document:", error);
+    throw error; // Re-throw the error to handle it in the calling function
   }
 };
