@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { Input } from "./ui/input";
 import Image from "next/image";
 import { updateDocumentTitle } from "@/lib/actions/room.actions";
+import Loader from "./Loader";
 
 interface CollaborativeRoomProps {
   roomId: string;
@@ -66,7 +67,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => 
 
   return (
     <RoomProvider id={roomId}>
-      <ClientSideSuspense fallback={<div>Loading…</div>}>
+      <ClientSideSuspense fallback={<Loader/>}>
       <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
       <Header>
             <div className="flex w-full items-center justify-between">
