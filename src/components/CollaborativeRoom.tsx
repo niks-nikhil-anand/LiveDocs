@@ -31,7 +31,6 @@ const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => 
       try {
         if (documentTitle !== roomMetadata.title) {
           const updateTitle = await updateDocumentTitle(roomId, documentTitle);
-          console.log("Saved in the database ")
 
           if (updateTitle) {
             setEditing(false);
@@ -68,8 +67,8 @@ const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => 
   return (
     <RoomProvider id={roomId}>
       <ClientSideSuspense fallback={<div>Loading…</div>}>
-        <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
-          <Header>
+      <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
+      <Header>
             <div className="flex w-full items-center justify-between">
               <div
                 ref={containerRef}

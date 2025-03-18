@@ -1,11 +1,16 @@
-import { cn } from '@/lib/utils'
-import Image from 'next/image'
-import Link from 'next/link'
+import { cn } from '@/lib/utils';
+import Image from 'next/image';
+import Link from 'next/link';
+
+interface HeaderProps {
+  children: React.ReactNode;
+  className?: string;
+}
 
 const Header = ({ children, className }: HeaderProps) => {
   return (
     <div className={cn("min-h-[92px] min-w-full flex-nowrap bg-dark-100 flex w-full items-center justify-between gap-2 px-4", className)}>
-      <Link href='/' className="md:flex-1">
+      <Link href='/' className="flex items-center">
         <Image 
           src="/assets/icons/logo.svg"
           alt="Logo with name"
@@ -18,12 +23,12 @@ const Header = ({ children, className }: HeaderProps) => {
           alt="Logo"
           width={32}
           height={32}
-          className="mr-2 md:hidden"
+          className="mr-2 block md:hidden"
         />
       </Link>
       {children}
     </div>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;
