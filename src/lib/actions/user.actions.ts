@@ -5,7 +5,6 @@ import { parseStringify } from "../utils";
 export const getClerkUsers = async ({ userIds }: { userIds: string[] }) => {
   try {
     const clerk = await clerkClient();
-
     // Fetch the list of users based on the provided email addresses
     const usersResponse = await clerk.users.getUserList({
       emailAddress: userIds,
