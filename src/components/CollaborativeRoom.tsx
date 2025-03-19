@@ -10,9 +10,15 @@ import Image from "next/image";
 import { updateDocumentTitle } from "@/lib/actions/room.actions";
 import Loader from "./Loader";
 
+// Define CollaborativeRoomProps if not already defined
+interface CollaborativeRoomProps {
+  roomId: string;
+  roomMetadata: { title: string };
+  users?: any; // Replace `any` with the correct type if needed
+  currentUserType: "editor" | "viewer"; // Assuming these are the possible values
+}
 
-const CollaborativeRoom = ({ roomId, roomMetadata , users , currentUserType }: CollaborativeRoomProps) => {
-
+const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: CollaborativeRoomProps) => {
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -62,14 +68,11 @@ const CollaborativeRoom = ({ roomId, roomMetadata , users , currentUserType }: C
 
   return (
     <RoomProvider id={roomId}>
-      <ClientSideSuspense fallback={<Loader/>}>
-      <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
-      <Header>
+      <ClientSideSuspense fallback={<Loader />}>
+        <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
+          <Header>
             <div className="flex w-full items-center justify-between">
-              <div
-                ref={containerRef}
-                className="flex flex-1 items-center justify-center gap-2"
-              >
+              <div ref={containerRef} className="flex flex-1 items-center justify-center gap-2">
                 {editing && !loading ? (
                   <Input
                     type="text"
@@ -120,7 +123,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata , users , currentUserType }: C
               </div>
             </div>
           </Header>
-          <Editor  roomId={roomId} currentUserType={currentUserType}>
+          <Editor roomId={roomId} currentUserType={currentUserType} />
         </div>
       </ClientSideSuspense>
     </RoomProvider>
