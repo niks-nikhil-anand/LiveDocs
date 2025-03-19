@@ -15,6 +15,8 @@ const Provider = ({ children }: { children: ReactNode }) => {
       const users = await getClerkUsers({userIds})
       return users
     }}
+
+    
     >
       <ClientSideSuspense fallback={<Loader/>}>
         {children}
