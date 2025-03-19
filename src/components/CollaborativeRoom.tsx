@@ -10,14 +10,6 @@ import Image from "next/image";
 import { updateDocumentTitle } from "@/lib/actions/room.actions";
 import Loader from "./Loader";
 
-interface CollaborativeRoomProps {
-  roomId: string;
-  roomMetadata: RoomMetadata;
-  users: User[];
-  currentUserType: UserType;
-
-
-}
 
 const CollaborativeRoom = ({ roomId, roomMetadata , users , currentUserType }: CollaborativeRoomProps) => {
 
@@ -128,7 +120,7 @@ const CollaborativeRoom = ({ roomId, roomMetadata , users , currentUserType }: C
               </div>
             </div>
           </Header>
-          <Editor />
+          <Editor  roomId={roomId} currentUserType={currentUserType}>
         </div>
       </ClientSideSuspense>
     </RoomProvider>
