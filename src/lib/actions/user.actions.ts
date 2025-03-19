@@ -58,7 +58,9 @@ export const getDocumentUser = async ({
       );
 
       return parseStringify(filteredUser);
-    } else {
+    } 
+    
+    else {
       // Return all users except the current user if no text is provided
       return parseStringify(users);
     }
