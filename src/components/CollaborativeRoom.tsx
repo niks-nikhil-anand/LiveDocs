@@ -12,11 +12,14 @@ import Loader from "./Loader";
 
 interface CollaborativeRoomProps {
   roomId: string;
-  roomMetadata: { title: string };
+  roomMetadata: RoomMetadata;
+  users: User[];
+  currentUserType: UserType;
+
+
 }
 
-const CollaborativeRoom = ({ roomId, roomMetadata }: CollaborativeRoomProps) => {
-  const currentUserType = "editor";
+const CollaborativeRoom = ({ roomId, roomMetadata , users , currentUserType }: CollaborativeRoomProps) => {
 
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);

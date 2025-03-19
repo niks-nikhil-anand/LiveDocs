@@ -8,14 +8,14 @@ import { RichTextPlugin } from '@lexical/react/LexicalRichTextPlugin';
 import { ContentEditable } from '@lexical/react/LexicalContentEditable';
 import { HistoryPlugin } from '@lexical/react/LexicalHistoryPlugin';
 import { LexicalErrorBoundary } from '@lexical/react/LexicalErrorBoundary';
-import React from 'react';
+import {liveblocksConfig} from '@liveblocks/react-lexical'
 
 function Placeholder() {
   return <div className="editor-placeholder">Enter some rich text...</div>;
 }
 
 export function Editor() {
-  const initialConfig = {
+  const initialConfig = liveblocksConfig({
     namespace: 'Editor',
     nodes: [HeadingNode], 
     onError: (error: Error) => {
@@ -23,7 +23,8 @@ export function Editor() {
       throw error;
     },
     theme: Theme,
-  };
+    editable: true
+  });
 
   return (
     <LexicalComposer initialConfig={initialConfig}>
