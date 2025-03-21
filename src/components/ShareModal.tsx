@@ -11,6 +11,8 @@ import {
 } from "@/components/ui/dialog";
 import { Button } from "./ui/button";
 import Image from "next/image";
+import { Label } from "./ui/label";
+import { Input } from "./ui/input";
 
 const ShareModal = ({
   roomId,
@@ -31,27 +33,44 @@ const ShareModal = ({
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger>
-        <Button className="cursor-pointer bg-gradient-to-t from-blue-500 to-blue-400 flex h-9 gap-1 px-4 "
-        disabled= {currentUserType !== 'editor'}
+        <Button
+          className="cursor-pointer bg-gradient-to-t from-blue-500 to-blue-400 flex h-9 gap-1 px-4 "
+          disabled={currentUserType !== "editor"}
         >
           <Image
-          src={"/assets/icons/share.svg"}
-          alt="share"
-          height={20}
-          width={20}
-          className="min-w-4 md:size-5"
+            src={"/assets/icons/share.svg"}
+            alt="share"
+            height={20}
+            width={20}
+            className="min-w-4 md:size-5"
           />
           Share
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent
+        className="w-full max-w-[400px] rounded-xl border-none bg-cover px-5 py-7 shadow-xl sm:min-w-[500px]"
+        style={{ backgroundImage: "url(/assets/images/doc.png)" }}
+      >
         <DialogHeader>
-          <DialogTitle>Are you absolutely sure?</DialogTitle>
+          <DialogTitle>Manage who can view this project</DialogTitle>
           <DialogDescription>
-            This action cannot be undone. This will permanently delete your
-            account and remove your data from our servers.
+            Select which users can view and edit this document
           </DialogDescription>
         </DialogHeader>
+        <Label htmlFor="email" className="mt-6 text-blue-100">
+          Email address
+        </Label>
+        <div className="flex items-center gap-3">
+          <div className="flex flex-1 rounded-md bg-">
+            <Input
+              id="email"
+              value={email}
+              placeholder="Enter email address"
+              onChange={(e) => setEmail(e.target.value)}
+              className=" h-11 flex-1 border-none bg-[#27344D] focus-visible:ring-0 focus-visible:ring-offset-0"
+            />
+          </div>
+        </div>
       </DialogContent>
     </Dialog>
   );
