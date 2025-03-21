@@ -9,6 +9,7 @@ import { Input } from "./ui/input";
 import Image from "next/image";
 import { updateDocumentTitle } from "@/lib/actions/room.actions";
 import Loader from "./Loader";
+import ShareModal from "./ShareModal";
 
 // Define CollaborativeRoomProps if not already defined
 interface CollaborativeRoomProps {
@@ -18,7 +19,12 @@ interface CollaborativeRoomProps {
   currentUserType: "editor" | "viewer"; // Assuming these are the possible values
 }
 
-const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: CollaborativeRoomProps) => {
+const CollaborativeRoom = ({
+  roomId,
+  roomMetadata,
+  users,
+  currentUserType,
+}: CollaborativeRoomProps) => {
   const [documentTitle, setDocumentTitle] = useState(roomMetadata.title);
   const [editing, setEditing] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -26,7 +32,9 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
   const containerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLInputElement>(null);
 
-  const updateTitleHandler = async (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const updateTitleHandler = async (
+    e: React.KeyboardEvent<HTMLInputElement>
+  ) => {
     if (e.key === "Enter") {
       setLoading(true);
 
@@ -48,7 +56,10 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
 
   useEffect(() => {
     const handleOutsideClick = (e: MouseEvent) => {
-      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
         setEditing(false);
       }
     };
@@ -72,7 +83,10 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
         <div className="flex size-full max-h-screen flex-1 flex-col items-center overflow-hidden">
           <Header>
             <div className="flex w-full items-center justify-between">
-              <div ref={containerRef} className="flex flex-1 items-center justify-center gap-2">
+              <div
+                ref={containerRef}
+                className="flex flex-1 items-center justify-center gap-2"
+              >
                 {editing && !loading ? (
                   <Input
                     type="text"
@@ -114,6 +128,12 @@ const CollaborativeRoom = ({ roomId, roomMetadata, users, currentUserType }: Col
 
               <div className="flex items-center gap-2 sm:gap-3">
                 <ActiveCollaborator />
+                <ShareModal
+                  roomId={roomId}
+                  collaborators={users}
+                  creatorId={roomMetadata.creatorId}
+                  currentUserType={currentUserType}
+                />
                 <SignedOut>
                   <SignInButton />
                 </SignedOut>
